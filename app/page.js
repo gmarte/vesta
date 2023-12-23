@@ -6,12 +6,15 @@ import Header from '@/components/Header'
 import Initiate from '@/components/Initiate'
 import Items from '@/components/Items'
 import PageChange from '@/components/PageChange'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-10 ">
       <Header />            
-      <div className="my-12 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
+      <ToastContainer />
+      <div className="my-12 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">        
         <AccessTokenFetcher />
         <Initiate />
         <AddCart />

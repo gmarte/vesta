@@ -5,6 +5,8 @@ import Items from './Items';
 import Loading from './Loading';
 import putAddCart from '@/lib/putAddCart';
 
+import { toast } from 'react-toastify';
+
 
 const AddCart = () => {
   const { accessToken, transactionID, isLoading, setIsLoading } = useStore((state) => ({
@@ -18,6 +20,9 @@ const AddCart = () => {
     try {
         const data = await putAddCart(accessToken,transactionID);
         console.log(data);
+        toast.success(`Added to cart! ${data.time}`, {
+          position: toast.POSITION.TOP_RIGHT,
+        });
       } catch (error) {
         console.error('Failed to fetch access token:', error);
         // Handle error appropriately
@@ -36,8 +41,7 @@ const AddCart = () => {
         over='add to cart'
         title='3. Add Cart'
         description='Funcionality to add to cart'
-     />
-
+     />     
   );
 };
 

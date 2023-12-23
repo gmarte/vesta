@@ -2,7 +2,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(){   
+export async function POST(req){   
     const body = {
         uniqueCartId: "AIV90687S980SV",
         productCode: "98101003",
@@ -20,11 +20,8 @@ export async function POST(){
         isGiftCard: "false",
         eventType: "add"
     };
-
-    // const { accessToken, transactionID } = NextRequest.body;
     
-    console.log("AccessToken:", NextRequest.body);
-    // console.log("TransactionID:", transactionID);
+    const { accessToken, transactionID } = JSON.parse(await req.text());
 
     try {
         const response = await fetch(`https://platform.vesta.io/api/v1/transactions/sandbox/${transactionID}`, {
